@@ -1,5 +1,10 @@
 {
   "$comment": "Excerpts worth adopting in ~/.claude/settings.json. The context-discipline plugin wires its own hooks automatically; these are EXTRA generic guards you wire yourself. Merge what you want — this is not a complete settings file.",
+  "$statusline_comment": "Shows model | cwd | git branch | ctx:N% on every turn. Watching context drain in real time is what makes you act at 50% instead of discovering pressure when the auto-compact warning appears. You can't manage what you can't see.",
+  "statusLine": {
+    "type": "command",
+    "command": "input=$(cat); model=$(echo \"$input\" | jq -r '.model.display_name // \"Claude\"' | sed 's/^Claude //'); cwd=$(echo \"$input\" | jq -r '.workspace.current_dir // .cwd // \"\"'); [ -n \"$cwd\" ] && cwd=$(echo \"$cwd\" | sed \"s|$HOME|~|\"); branch=$(git --no-optional-locks -C \"$(echo \"$input\" | jq -r '.workspace.current_dir // .cwd // \".\"')\" branch --show-current 2>/dev/null || echo ''); [ ${#branch} -gt 20 ] && branch=\"${branch:0:17}...\"; [ -n \"$branch\" ] && branch_str=\" | ${branch}\" || branch_str=\"\"; ctx=$(echo \"$input\" | jq -r '.context_window.remaining_percentage // empty'); [ -n \"$ctx\" ] && ctx_str=\" | ctx:$(printf '%.0f' \"$ctx\")%\" || ctx_str=\"\"; echo \"${model} | ${cwd}${branch_str}${ctx_str}\""
+  },
   "permissions": {
     "deny": [
       "Read(**/.env)",

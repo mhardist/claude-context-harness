@@ -88,7 +88,20 @@ When context runs low you have two options, and they are not equivalent:
   of dragging a blurry summary of everything.
 
 This harness is built for clearing. Compaction is the fallback you should
-rarely hit.
+rarely hit — and the thresholds make it *unreachable* by design: auto-compact
+fires above ~90% used, but this harness intervenes at 40% (promote durables)
+and 50% (checkpoint + clear). The clear cycle completes twice over before
+compaction's threshold is even approachable. If you ever see a compaction
+warning while running this harness, that's a signal the checkpoint loop
+broke — investigate, don't just compact.
+
+Two supporting habits:
+
+- **Put context % in your statusline** (see `templates/settings.json.example`)
+  so you watch the window drain in real time instead of discovering pressure
+  when the warning appears.
+- **Save continuously at checkpoints** (rule 4 in `CLAUDE.md.example`) so the
+  50% intervention is a non-event — everything durable is already on disk.
 
 ## The payoff: /clear with confidence
 

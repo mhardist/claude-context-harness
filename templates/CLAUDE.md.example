@@ -40,6 +40,19 @@ are free, offline, and authoritative. The `local-knowledge-first` hook
 auto-injects this reminder on matching prompts; treat it as a hard
 precondition, not a suggestion.
 
+## CLI-First Tool Preferences (context efficiency in disguise)
+
+Prefer terse CLI tools over SDK exploration and raw page fetches — CLI output
+is compact and exact; the alternatives are thousands of tokens of noise:
+
+- Cloud work: `gcloud` / `aws` CLI before API client libraries (use SDKs only
+  in application runtime code)
+- Databases: `psql` for queries, schema exploration, and ad-hoc work before
+  programmatic clients
+- Web pages: a content extractor (e.g.,
+  [defuddle](https://github.com/kepano/defuddle) — `defuddle parse <url> --md`)
+  before WebFetch; it strips navigation and clutter, returning clean markdown
+
 ## Learn From Mistakes (the improvement loop)
 
 When something goes wrong — a bug, a wrong assumption, a failed approach —

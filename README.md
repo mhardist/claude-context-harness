@@ -24,8 +24,8 @@ This is a working harness built around two loops:
 ```
 
 Then copy what you want from [`templates/`](templates/):
-- [`CLAUDE.md.example`](templates/CLAUDE.md.example) — the context-discipline rules, local-knowledge-first pattern, and learn-from-mistakes instructions
-- [`settings.json.example`](templates/settings.json.example) — secrets-deny permissions, pre-commit secret scan, edit-backup hook
+- [`CLAUDE.md.example`](templates/CLAUDE.md.example) — the context-discipline rules, local-knowledge-first pattern, CLI-first tool preferences, and learn-from-mistakes instructions
+- [`settings.json.example`](templates/settings.json.example) — context-% statusline, secrets-deny permissions, pre-commit secret scan, edit-backup hook
 - [`mcp.json.example`](templates/mcp.json.example) — MCP config with env-var placeholders and the activate-on-demand philosophy
 
 ## What's inside
@@ -71,6 +71,17 @@ See [`docs/improvement-loop.md`](docs/improvement-loop.md). Ask "how did we coll
 ## Subagent delegation
 
 See [`docs/subagent-delegation.md`](docs/subagent-delegation.md). Verbose work (big reads, codebase-wide greps, multi-step research) goes to subagents whose tool results never touch your main context.
+
+## Local knowledge
+
+See [`docs/local-knowledge.md`](docs/local-knowledge.md). Write down what Claude keeps re-deriving — authoritative markdown docs for your schemas, APIs, and gotchas. Wrong answers are the most expensive context of all; a 50-line file read beats a guessed-wrong query every time.
+
+## More context practices
+
+- **Context % in your statusline** — the statusline in `settings.json.example` shows `ctx:N%` every turn. Visibility is what makes you act at 50% instead of discovering pressure at the compaction warning.
+- **Why this harness never compacts** — auto-compact fires above ~90% used; this harness clears at 50%. The threshold arithmetic makes compaction unreachable by design (see [`docs/memory-system.md`](docs/memory-system.md)).
+- **Fat skills, thin CLAUDE.md** — your `CLAUDE.md` loads into every session; skills load only when triggered. Keep CLAUDE.md down to standing rules and a routing table, and push detailed procedures into skills. Same progressive-disclosure idea as MCP archiving, applied to instructions.
+- **CLI-first tools** — terse CLI output (`psql`, `gcloud`, content extractors) over SDK exploration and raw page fetches. See the section in `CLAUDE.md.example`.
 
 ## Credits
 
