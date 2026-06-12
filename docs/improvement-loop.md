@@ -77,10 +77,16 @@ feedback memory with: what happened, why, and the rule that prevents
 recurrence. Retrospectives catch the patterns; in-the-moment capture catches
 the incidents.
 
-## Automated complement
+## Automated complements
 
-[everything-claude-code](https://github.com/affaan-m/everything-claude-code)'s
-`continuous-learning` skill does an automated version of this — extracting
-reusable patterns from sessions into learned skills. It pairs well with the
-manual retrospective: automation catches patterns you didn't notice, the
-retrospective catches things only you can judge.
+Two tools pair well with the manual retrospective:
+
+- **Claude Code's built-in `/insights` command** — run it regularly. The
+  retrospective is qualitative and per-session; `/insights` is the
+  quantitative, cross-session report on how you actually work with Claude.
+  Use the retrospective to decide what to change and `/insights` to verify
+  the change took.
+- **[everything-claude-code](https://github.com/affaan-m/everything-claude-code)'s
+  `continuous-learning` skill** — automated pattern extraction from sessions
+  into learned skills. Automation catches patterns you didn't notice; the
+  retrospective catches things only you can judge.
