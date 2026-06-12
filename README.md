@@ -1,4 +1,4 @@
-# claude-harness
+# claude-context-harness
 
 **Work all day in Claude Code without context rot — and make the harness better every session.**
 
@@ -18,9 +18,9 @@ This is a working harness built around two loops:
 ## Quickstart
 
 ```
-/plugin marketplace add <your-github-username>/claude-harness
-/plugin install context-discipline@claude-harness
-/plugin install working-style@claude-harness
+/plugin marketplace add mhardist/claude-context-harness
+/plugin install context-discipline@claude-context-harness
+/plugin install working-style@claude-context-harness
 ```
 
 Then copy what you want from [`templates/`](templates/):
@@ -49,7 +49,6 @@ Then copy what you want from [`templates/`](templates/):
 | Component | Type | What it does |
 |---|---|---|
 | `prompt-architect` | skill | Turns vague ideas into explicit, buildable prompts |
-| `seven-advisors` | skill | Multi-perspective decision council for important choices |
 | `ralph-simplify` | skill | Aggressively strips overengineering ("what would a child do?") |
 | `mcp-guide` | skill | Which MCP server to use, when |
 | `/mcp-activate-*` | commands | Activate MCP servers on demand instead of always-on — saves context every session |
