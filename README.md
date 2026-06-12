@@ -49,14 +49,14 @@ Then copy what you want from [`templates/`](templates/):
 | `dream` | skill | Memory consolidation — merges session signal into topic files, prunes the index |
 | `context-manager` | skill | **Training wheels.** Checkpoint before /clear — saves session state, learnings, resume actions. See note below. |
 | `session-retrospective` | skill | "How did we work together?" — harvests friction into harness improvements |
-
-> **`context-manager` is training wheels — and that's a feature.** When you start, you have no memory habit and no trust that clearing is safe; this skill gives you an explicit, mechanical checkpoint protocol to lean on. As your memory matures, checkpointing migrates into the flow of work itself — saves happen continuously to persistent memory, and the formal protocol stops being needed. That's not the skill failing; that's the skill *graduating you*. Measured in the author's own usage: the protocol was active for the first weeks, then formal invocations dropped to zero while the pressure alert kept firing in 75% of sessions — answered every time by inline saves to memory. The wheels come off on their own; you won't have to take them off.
 | `context-monitor` | hook (PostToolUse) | Panic-save trigger at 50% context used |
 | `memory-capture` | hook (PostToolUse) | One-shot nudge at 40% to promote durable knowledge to memory |
 | `subagent-suggest` | hook (UserPromptSubmit) | Nudges delegation of exploration work to subagents |
 | `large-read-warning` | hook (PreToolUse/Read) | Warns before large file reads pollute main context |
 | `parallel-agent-guard` + `parallel-agent-pretool-guard` | hooks | Caps runaway parallel agent dispatch |
 | `local-knowledge-first` | hook (UserPromptSubmit) | Reminds Claude to consult your authoritative local docs before guessing |
+
+> **`context-manager` is training wheels — and that's a feature.** When you start, you have no memory habit and no trust that clearing is safe; this skill gives you an explicit, mechanical checkpoint protocol to lean on. As your memory matures, checkpointing migrates into the flow of work itself — saves happen continuously to persistent memory, and the formal protocol stops being needed. That's not the skill failing; that's the skill *graduating you*. Measured in the author's own usage: the protocol was active for the first weeks, then formal invocations dropped to zero while the pressure alert kept firing in 75% of sessions — answered every time by inline saves to memory. The wheels come off on their own; you won't have to take them off.
 
 ### Plugin: `working-style`
 
