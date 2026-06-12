@@ -1,8 +1,8 @@
 #!/bin/bash
 # Context Monitor Hook
-# Triggers context-manager protocol when remaining context drops below 50%
-# Lowered from 65% to 50% because Opus 4.7 uses more tokens per turn than 4.6
-# and context rot sets in before the 35% remaining mark.
+# Triggers context-manager protocol at 50% context used. Tune THRESHOLD_USED
+# to taste — newer models use more tokens per turn, and context rot sets in
+# well before the window is actually full.
 # Uses two detection methods:
 #   1. context_window.used_percentage from hook input (if available)
 #   2. Transcript file size as fallback proxy
