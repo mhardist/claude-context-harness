@@ -75,7 +75,7 @@ See [`docs/memory-system.md`](docs/memory-system.md). The short version: memory 
 
 ## The improvement loop
 
-See [`docs/improvement-loop.md`](docs/improvement-loop.md). Ask "how did we collaborate this session?" at the end of substantial work; convert each finding into a feedback memory, a hook, or a CLAUDE.md rule. The harness compounds.
+See [`docs/improvement-loop.md`](docs/improvement-loop.md). Ask **"how did we work together in this session?"** at the end of substantial work — every time, as a ritual. Convert each finding into a feedback memory, a hook, or a CLAUDE.md rule. And note that the question cuts both ways: half the findings are usually about how *you* ran the session — context delivered too late, scope left ambiguous — not how Claude executed it. The harness improves the tool *and* the operator; that's why it compounds instead of plateauing.
 
 ## Subagent delegation
 

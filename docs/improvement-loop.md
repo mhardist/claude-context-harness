@@ -5,13 +5,37 @@ session.** Memory makes work continuous; retrospectives make it compound.
 
 ## The practice
 
-At the end of any substantial session, ask:
+At the end of any substantial session, ask — every time, as a ritual:
 
-> "How did we collaborate in this session?"
+> "How did we work together in this session?"
 
 The `session-retrospective` skill structures the answer: highlights,
-lowlights, what Claude could have done better, what you could have done
+lowlights, what Claude could have done better, what *you* could have done
 better, and which skills/hooks/tools would have helped.
+
+## The loop runs in both directions
+
+This is the part most people miss: the retrospective improves the
+**operator**, not just the harness. Half the friction in any session traces
+back to how it was run, not how it was executed — and only the retrospective
+surfaces that half:
+
+- Context delivered too late ("if I'd mentioned the deadline up front,
+  the whole first hour would have been scoped differently")
+- Ambiguous scope ("'clean this up' meant formatting to me and refactoring
+  to Claude")
+- Interrupting work that was about to converge, or not interrupting work
+  that was drifting
+- Asking for output before asking for the plan, or vice versa
+
+Where operator-side findings go: some become how you phrase and sequence
+requests tomorrow; the durable ones go in the **user profile memory**
+(`user_profile.md`) so Claude can meet you halfway — anticipating the
+context you tend to omit, or asking the one clarifying question you'd
+have wanted.
+
+A harness that only improves the tool plateaus at the quality of its
+instructions. One that improves both sides compounds.
 
 ## Converting findings into harness changes
 
