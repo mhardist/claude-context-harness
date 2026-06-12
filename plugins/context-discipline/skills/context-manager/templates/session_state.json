@@ -1,0 +1,25 @@
+{
+  "generated": "",
+  "workflow": "",
+  "current_phase": "",
+  "completed_phases": [],
+  "key_metrics": {},
+  "data_locations": {
+    "input": "",
+    "golden_dataset": "",
+    "intermediate_results": "",
+    "final_output": ""
+  },
+  "aws_context": {
+    "profile": "",
+    "region": "",
+    "prompt_version": "",
+    "state_machine_arn": ""
+  },
+  "next_phase": {
+    "action": "",
+    "inputs_ready": false,
+    "depends_on": ""
+  },
+  "assumptions": []
+}

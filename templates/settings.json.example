@@ -1,0 +1,50 @@
+{
+  "$comment": "Excerpts worth adopting in ~/.claude/settings.json. The context-discipline plugin wires its own hooks automatically; these are EXTRA generic guards you wire yourself. Merge what you want — this is not a complete settings file.",
+  "permissions": {
+    "deny": [
+      "Read(**/.env)",
+      "Read(**/.env.*)",
+      "Read(**/secrets/**)",
+      "Read(**/credentials*)",
+      "Read(**/*.pem)",
+      "Read(**/*.key)",
+      "Read(~/.ssh/**)",
+      "Read(~/.aws/credentials)",
+      "Read(**/node_modules/**)",
+      "Read(**/venv/**)",
+      "Read(**/*.db)",
+      "Read(**/*.sqlite)"
+    ]
+  },
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash(git commit*)",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo '🔒 PRE-COMMIT CHECK: Scanning for secrets...'; if git diff --cached --name-only | xargs grep -l -i -E '(password|secret|api_key|token|credential|private_key|AWS_ACCESS|AWS_SECRET)' 2>/dev/null; then echo '⚠️ WARNING: Potential secrets detected in staged files! Review before committing.'; fi; if git diff --cached --name-only | grep -E '(\\.env$|\\.pem$|\\.key$|credentials)' 2>/dev/null; then echo '⚠️ WARNING: Sensitive file types detected in staged files!'; fi"
+          }
+        ]
+      },
+      {
+        "matcher": "Bash(git push*)",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo '🚀 PRE-PUSH CHECK'; branch=$(git branch --show-current 2>/dev/null); if [ \"$branch\" = \"main\" ] || [ \"$branch\" = \"master\" ]; then echo '⚠️ WARNING: You are pushing directly to main/master branch!'; fi"
+          }
+        ]
+      },
+      {
+        "matcher": "Write|Edit|MultiEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "jq -r '.tool_input.file_path' | { read -r f; [ -f \"$f\" ] || exit 0; d=$(dirname \"$f\"); b=\"$HOME/.claude/backups\"; mkdir -p \"$b\"; if git -C \"$d\" rev-parse --is-inside-work-tree >/dev/null 2>&1; then if git -C \"$d\" ls-files --error-unmatch \"$f\" >/dev/null 2>&1 && ! git -C \"$d\" diff --quiet -- \"$f\" 2>/dev/null; then cp \"$f\" \"$b/$(basename \"$f\")_backup_$(date +%s)\"; fi; else cp \"$f\" \"$b/$(basename \"$f\")_backup_$(date +%s)\"; fi; } 2>/dev/null || true"
+          }
+        ]
+      }
+    ]
+  }
+}

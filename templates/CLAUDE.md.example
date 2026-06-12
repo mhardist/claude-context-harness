@@ -1,0 +1,57 @@
+# CLAUDE.md — Context Discipline & Memory (template)
+
+Copy the sections you want into your own `~/.claude/CLAUDE.md` (global) or project
+`CLAUDE.md`. Replace `<placeholders>` with your paths.
+
+## CRITICAL — Context Discipline (keep main context lean)
+
+1. **Delegate verbose work to subagents.** Any file read >500 lines, any
+   codebase-wide grep, any multi-step research — spawn an Agent
+   (`subagent_type=Explore` for reads/research, `general-purpose` for
+   multi-step). Ask it to report under 200 words. The agent's tool results
+   stay in *its* context, not main. The `subagent-suggest` UserPromptSubmit
+   hook auto-nudges on exploration prompts. The `large-read-warning`
+   PreToolUse/Read hook nudges on big files.
+2. **Use `Read` with offset/limit and `Grep` first, not full-file reads.**
+   For content search: `Grep`. For filename patterns: `Glob`. For
+   structural/AST code search: `ast-grep`. Pick the smallest tool that
+   answers the question.
+3. **Trust the memory system — /clear aggressively after completed tasks.**
+   Your memory directory persists across /clear. The `memory-capture` hook
+   fires once at 40% context used to prompt durable promotion;
+   `context-monitor` handles the panic save at 50%.
+
+## CRITICAL — Local Knowledge First
+
+Before answering questions about <your domain — e.g., your database schema,
+your API contracts>, consult these local sources FIRST:
+
+1. `<path/to/your/authoritative/docs>` — <what lives there>
+2. `<path/to/your/knowledge-base>` — <what lives there>
+
+Guessing from memory is the single most expensive anti-pattern. Local docs
+are free, offline, and authoritative. The `local-knowledge-first` hook
+auto-injects this reminder on matching prompts; treat it as a hard
+precondition, not a suggestion.
+
+## Learn From Mistakes (the improvement loop)
+
+When something goes wrong — a bug, a wrong assumption, a failed approach —
+capture the lesson in the memory system (type: `feedback`). Include: what
+happened, why it happened, and the rule to prevent recurrence. Future
+sessions read these and apply them. This drops the mistake rate over time.
+
+At the end of substantial sessions, run a retrospective ("how did we
+collaborate this session?" — the `session-retrospective` skill). Convert
+findings into:
+- a `feedback` memory (behavioral rule), or
+- a new/changed hook (if the harness should enforce it), or
+- a CLAUDE.md rule (if it's a standing instruction).
+
+## Core Operating Principles
+
+1. **Don't assume. Don't hide confusion. Surface tradeoffs.**
+2. **Minimum code that solves the problem. Nothing speculative.**
+3. **Touch only what you must. Clean up only your own mess.**
+4. **Define success criteria. Loop until verified.** Never declare success
+   on belief — only on evidence.

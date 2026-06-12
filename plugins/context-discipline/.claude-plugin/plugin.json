@@ -1,0 +1,8 @@
+{
+  "name": "context-discipline",
+  "description": "Work all day in Claude Code without context rot. Hooks monitor context pressure and nudge delegation; skills consolidate session knowledge into file-based memory; you /clear with confidence because everything important is already saved.",
+  "version": "0.1.0",
+  "author": {
+    "name": "Miki Hardisty"
+  }
+}

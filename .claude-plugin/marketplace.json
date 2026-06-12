@@ -1,0 +1,22 @@
+{
+  "name": "claude-harness",
+  "owner": {
+    "name": "Miki Hardisty"
+  },
+  "metadata": {
+    "description": "A Claude Code harness for continuous work: file-based memory, confident context-clearing, subagent delegation, and a session-retrospective loop that improves the harness itself.",
+    "version": "0.1.0"
+  },
+  "plugins": [
+    {
+      "name": "context-discipline",
+      "source": "./plugins/context-discipline",
+      "description": "The memory + context loop: hooks watch context pressure, skills consolidate session knowledge into persistent memory, so you can /clear with confidence."
+    },
+    {
+      "name": "working-style",
+      "source": "./plugins/working-style",
+      "description": "Skills that shape how work gets done: prompt structuring, multi-perspective decisions, aggressive simplification, and on-demand MCP activation to keep context lean."
+    }
+  ]
+}
