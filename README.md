@@ -29,16 +29,39 @@ One month of real daily use (108 main sessions, ~3.6/day, mined from actual tran
 
 ## Quickstart
 
+### Step 1 — Install the plugins (safe: touches nothing you have)
+
 ```
 /plugin marketplace add mhardist/claude-context-harness
 /plugin install context-discipline@claude-context-harness
 /plugin install working-style@claude-context-harness
 ```
 
-Then copy what you want from [`templates/`](templates/):
-- [`CLAUDE.md.example`](templates/CLAUDE.md.example) — the context-discipline rules, local-knowledge-first pattern, CLI-first tool preferences, and learn-from-mistakes instructions
-- [`settings.json.example`](templates/settings.json.example) — context-% statusline, secrets-deny permissions, pre-commit secret scan, edit-backup hook
-- [`mcp.json.example`](templates/mcp.json.example) — MCP config with env-var placeholders and the activate-on-demand philosophy
+Plugin installs are **purely additive**. The skills, hooks, and commands live
+inside the plugin's own directory — your existing `CLAUDE.md`, `settings.json`,
+hooks, and skills are not modified. Don't like it? `/plugin uninstall` removes
+it cleanly. The hooks start nudging immediately; that's them working.
+
+### Step 2 — Adopt the templates (⚠️ merge, don't copy)
+
+The files in [`templates/`](templates/) are **merge sources, not
+replacements**. Never copy them over your existing files — you'd silently
+erase your own accumulated configuration. Back up first, then open the
+template side-by-side and pull in the sections you want:
+
+```bash
+# Back up before touching anything (yes, we practice what we preach)
+cp ~/.claude/CLAUDE.md ~/.claude/CLAUDE.md.backup_$(date +%Y%m%d) 2>/dev/null
+cp ~/.claude/settings.json ~/.claude/settings.json.backup_$(date +%Y%m%d) 2>/dev/null
+```
+
+- [`CLAUDE.md.example`](templates/CLAUDE.md.example) — **append or weave sections into** your existing `~/.claude/CLAUDE.md` (or a project `CLAUDE.md`): the context-discipline rules, local-knowledge-first pattern, CLI-first preferences, learn-from-mistakes instructions. If you don't have a CLAUDE.md yet, copying the whole file is fine.
+- [`settings.json.example`](templates/settings.json.example) — **not a complete settings file.** Merge individual keys (`statusLine`, `permissions.deny`, the extra `hooks` entries) into your existing `settings.json` by hand or with `jq`. If you already have hooks configured, append to the matching event arrays — don't replace them.
+- [`mcp.json.example`](templates/mcp.json.example) — reference for the env-var-placeholder pattern and the activate-on-demand philosophy; adapt to your servers rather than copying.
+
+If you only do Step 1, you still get the full hook + skill machinery. Step 2
+is where the standing instructions and statusline come from — worth doing,
+carefully.
 
 ## What's inside
 
