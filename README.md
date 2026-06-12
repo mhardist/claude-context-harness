@@ -89,7 +89,7 @@ See [`docs/local-knowledge.md`](docs/local-knowledge.md). Write down what Claude
 
 - **Context % in your statusline** — the statusline in `settings.json.example` shows `ctx:N%` every turn. Visibility is what makes you act at 50% instead of discovering pressure at the compaction warning.
 - **Why this harness never compacts** — auto-compact fires above ~90% used; this harness clears at 50%. The threshold arithmetic makes compaction unreachable by design (see [`docs/memory-system.md`](docs/memory-system.md)).
-- **Fat skills, thin CLAUDE.md** — your `CLAUDE.md` loads into every session; skills load only when triggered. Keep CLAUDE.md down to standing rules and a routing table, and push detailed procedures into skills. Same progressive-disclosure idea as MCP archiving, applied to instructions.
+- **Fat skills, thin CLAUDE.md** — your `CLAUDE.md` loads into every session; skills load only when triggered. Keep CLAUDE.md down to behavioral rules and undiscoverable facts, and push detailed procedures into skills. Same progressive-disclosure idea as MCP archiving, applied to instructions. See [`docs/always-loaded-budget.md`](docs/always-loaded-budget.md) for how to measure your per-session fixed cost — and the zero-duplication rule that governs it.
 - **CLI-first tools** — terse CLI output (`psql`, `gcloud`, content extractors) over SDK exploration and raw page fetches. See the section in `CLAUDE.md.example`.
 
 ## Credits
