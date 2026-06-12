@@ -23,7 +23,7 @@ One month of real daily use (108 main sessions, ~3.6/day, mined from actual tran
 - **28% of all transcript bytes diverted to subagents** — 147.5 MB of reads, greps, and research ran in 801 disposable subagent windows instead of the main context. 56% of sessions delegated, ~7 dispatches per delegating session.
 - **Median session: 1.47 MB** — short, sharp sessions instead of long degrading ones, because the memory system makes clearing free.
 - **Search-first reading** — 1,598 grep/search commands vs 1,957 full-file reads, and 43.5% of reads bounded with limit/offset.
-- **The guards retire themselves** — the 50% panic-save skill fired *zero* times (continuous checkpointing keeps sessions below it) and the delegation nudge fired in only 4 sessions (delegation became habit). The hooks that still fire (large-read warning, 32% of sessions) are the ones still teaching.
+- **The hooks do the reminding; the habits do the work** — the context-pressure alert fires in 75% of sessions (its size-based fallback is deliberately conservative) and checkpointing happens inline in response; the formal checkpoint skill was never needed as a separate invocation. The local-knowledge and large-read guards fire in 45% and 42% of sessions. Meanwhile the delegation nudge fired in only 7 sessions and the hard agent-ceiling deny in 3 — those behaviors became habit, and the guards quietly retired into backstops.
 
 ## Quickstart
 
