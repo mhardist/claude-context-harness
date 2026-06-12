@@ -61,12 +61,42 @@ Three moments where knowledge gets captured, ordered by urgency:
 resume actions for picking up where you left off. The `memory/` directory is
 **durable** — it outlives `/clear`, project switches, and months of time.
 
+## Save continuously — the thresholds are the backstop, not the engine
+
+The hooks above fire at pressure points, but the system works best when
+saving is *continuous*: Claude writes progress and resume-state notes to
+memory at logical checkpoints — after a decision, a completed phase, a
+durable finding — not only when a threshold trips. (The
+`CLAUDE.md.example` template includes this as a standing instruction.)
+
+This inverts the usual relationship with the context window. When memory is
+always current, low context availability stops being scary: you can clear —
+or crash, or close the laptop — at any moment and resume with confidence.
+The hooks exist for the sessions where the checkpointing discipline slipped.
+
+## Clear, don't compact
+
+When context runs low you have two options, and they are not equivalent:
+
+- **Compaction** summarizes your conversation automatically. It's lossy, you
+  don't control what survives, and the summary degrades with each round —
+  the harness deciding what mattered.
+- **Clearing** wipes the window after *you* (and your skills) have written
+  what mattered to structured memory files. Nothing is lost because the
+  durable knowledge was extracted deliberately, with names, links, and an
+  index — and the next session reloads exactly the files it needs instead
+  of dragging a blurry summary of everything.
+
+This harness is built for clearing. Compaction is the fallback you should
+rarely hit.
+
 ## The payoff: /clear with confidence
 
 The loop in practice:
 
-1. Work normally. Hooks watch context pressure silently.
-2. At 40%, promote durables. At 50%, checkpoint everything.
+1. Work normally. Hooks watch context pressure silently; memory gets
+   updated at every logical checkpoint.
+2. At 40%, promote remaining durables. At 50%, checkpoint everything.
 3. `/clear`. The window is empty; the knowledge isn't.
 4. Next session starts clean, recalls from `MEMORY.md`, and continues.
 

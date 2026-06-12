@@ -4,7 +4,7 @@
 
 This is a working harness built around two loops:
 
-1. **The memory loop** — hooks watch context pressure, skills consolidate session knowledge into persistent file-based memory, and you `/clear` with confidence because everything important is already saved.
+1. **The memory loop** — knowledge is saved to persistent file-based memory *continuously* at logical checkpoints (with pressure-triggered hooks as the backstop), so you `/clear` with confidence — clear, not compact — because everything important is already saved.
 2. **The improvement loop** — end-of-session retrospectives ("how did we collaborate?") turn friction into feedback memories, hooks, and CLAUDE.md rules, so the next session is measurably better.
 
 ```

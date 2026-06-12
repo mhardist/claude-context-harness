@@ -20,6 +20,12 @@ Copy the sections you want into your own `~/.claude/CLAUDE.md` (global) or proje
    Your memory directory persists across /clear. The `memory-capture` hook
    fires once at 40% context used to prompt durable promotion;
    `context-monitor` handles the panic save at 50%.
+4. **Save continuously, not just at thresholds.** Save progress and
+   resume-state notes to memory at logical checkpoints — after a decision,
+   a completed phase, a durable finding. Sessions are often long and resumed
+   later; the threshold hooks are the backstop, not the engine. If memory is
+   always current, context availability stops mattering: you can clear (or
+   crash) at any moment and resume with confidence.
 
 ## CRITICAL — Local Knowledge First
 
