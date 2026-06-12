@@ -2,6 +2,8 @@
 
 **Work all day in Claude Code without context rot — and make the harness better every session.**
 
+> **Tired of compacting?** Start with [**The Shift**](docs/the-shift.md) — why long sessions degrade, why compaction is the wrong fix, and the workbench-not-filing-cabinet model that makes the problem disappear. The rest of this repo is the machinery; that page is the mental model that makes the machinery make sense.
+
 This is a working harness built around two loops:
 
 1. **The memory loop** — knowledge is saved to persistent file-based memory *continuously* at logical checkpoints (with pressure-triggered hooks as the backstop), so you `/clear` with confidence — clear, not compact — because everything important is already saved.
@@ -68,6 +70,10 @@ The `/mcp-activate-*` commands read archived server configs from
 [`templates/mcp-archive/context7.json`](templates/mcp-archive/context7.json)
 for the format). Archive the servers you use occasionally, keep your default
 config empty, and activate on demand.
+
+## The mental model
+
+See [`docs/the-shift.md`](docs/the-shift.md) — the long-form explanation of the approach. The short version: treat the context window as a **workbench**, not a **filing cabinet**. Knowledge lives in files (named, indexed, reloadable); sessions are disposable; clearing is wiping the bench after the work is shelved. The reason you don't clear today is trust, not tooling — and trust is what the hooks and memory conventions mechanically build.
 
 ## How the memory system works
 
