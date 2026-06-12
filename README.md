@@ -15,6 +15,16 @@ This is a working harness built around two loops:
         ↘ session-retrospective → feedback memories / new hooks / new rules
 ```
 
+## Measured results
+
+One month of real daily use (108 main sessions, ~3.6/day, mined from actual transcripts):
+
+- **3.7% compaction rate** — auto-compact fired in 4 of 108 sessions. The threshold arithmetic works: clearing at 50% means the ~90% compaction trigger is almost never reached.
+- **28% of all transcript bytes diverted to subagents** — 147.5 MB of reads, greps, and research ran in 801 disposable subagent windows instead of the main context. 56% of sessions delegated, ~7 dispatches per delegating session.
+- **Median session: 1.47 MB** — short, sharp sessions instead of long degrading ones, because the memory system makes clearing free.
+- **Search-first reading** — 1,598 grep/search commands vs 1,957 full-file reads, and 43.5% of reads bounded with limit/offset.
+- **The guards retire themselves** — the 50% panic-save skill fired *zero* times (continuous checkpointing keeps sessions below it) and the delegation nudge fired in only 4 sessions (delegation became habit). The hooks that still fire (large-read warning, 32% of sessions) are the ones still teaching.
+
 ## Quickstart
 
 ```
