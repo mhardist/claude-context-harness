@@ -4,8 +4,8 @@ description: >
   Use when context is running low, "save context", "preserve context",
   "context checkpoint", "prepare for context clear", or when conversation
   exceeds ~50 messages/tool calls. Auto-preserves session knowledge before /clear.
-  Also saves intermediate data results (metrics, file paths, AWS context) for
-  multi-phase analytical workflows like prompt calibration, batch scoring, and report generation.
+  Also saves intermediate data results (metrics, file paths, environment context)
+  for multi-phase analytical workflows.
 user-invocable: true
 ---
 

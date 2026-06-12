@@ -11,8 +11,6 @@ Transform rough application ideas into explicit, buildable prompts for Claude Co
 
 **Core principle:** Vague prompts produce vague results. This skill extracts hidden assumptions, surfaces missing requirements, and generates structured prompts that Claude Code can execute without guesswork.
 
-**Model:** Use Opus 4.5 for architectural reasoning depth.
-
 ## When to Use
 
 ```dot

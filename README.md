@@ -54,6 +54,12 @@ Then copy what you want from [`templates/`](templates/):
 | `mcp-guide` | skill | Which MCP server to use, when |
 | `/mcp-activate-*` | commands | Activate MCP servers on demand instead of always-on — saves context every session |
 
+The `/mcp-activate-*` commands read archived server configs from
+`~/.claude/mcp-archive/` (one JSON file per server — see
+[`templates/mcp-archive/context7.json`](templates/mcp-archive/context7.json)
+for the format). Archive the servers you use occasionally, keep your default
+config empty, and activate on demand.
+
 ## How the memory system works
 
 See [`docs/memory-system.md`](docs/memory-system.md). The short version: memory is a directory of one-fact-per-file markdown notes with an index (`MEMORY.md`) that loads each session. Hooks prompt capture at context-pressure thresholds; `/dream` consolidates; `/clear` is safe because the files persist.

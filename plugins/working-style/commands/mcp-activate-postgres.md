@@ -1,3 +1,7 @@
+---
+description: Activate the PostgreSQL MCP server for database queries and schema exploration
+---
+
 # Activate PostgreSQL MCP Server
 
 Activate the PostgreSQL MCP server for database queries and schema exploration.

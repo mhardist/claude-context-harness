@@ -140,9 +140,11 @@ Detailed personas for each of the Seven Advisors. Load this file when executing 
 
 ---
 
-## Deliberation Sequence Rationale
+## Synthesis Reading Order Rationale
 
-The order is intentional:
+The advisors run **in parallel** (see SKILL.md — parallel execution prevents
+anchoring). This order governs how the Facilitator reads and weaves their
+independent reports during synthesis:
 
 1. **Facilitator opens** - Ensures everyone is solving the same problem
 2. **Analyst second** - Establishes the factual foundation before opinions enter

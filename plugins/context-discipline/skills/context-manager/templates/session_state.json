@@ -10,11 +10,10 @@
     "intermediate_results": "",
     "final_output": ""
   },
-  "aws_context": {
+  "environment": {
     "profile": "",
     "region": "",
-    "prompt_version": "",
-    "state_machine_arn": ""
+    "notes": ""
   },
   "next_phase": {
     "action": "",

@@ -8,10 +8,11 @@
 # while a genuine sequential next wave is minutes apart — so a small window cleanly separates
 # an in-message burst from a later wave.
 #
-# Ceiling per user_profile.md (8 GB M3, swap thrash observed under load): prefer <=4, hard 5.
-#   count <=4  -> silent allow
-#   count ==5  -> allow + inject "at hard ceiling" reminder
-#   count  >5  -> DENY this call (re-dispatch overflow in a later wave)
+# Ceiling: configurable via PARALLEL_AGENT_CEILING (default 5). Each concurrent
+# agent costs real memory/CPU; modest hardware swaps hard above ~5.
+#   count <  ceiling -> silent allow
+#   count == ceiling -> allow + inject "at hard ceiling" reminder
+#   count >  ceiling -> DENY this call (re-dispatch overflow in a later wave)
 #
 # Non-fatal: any internal error exits 0 (fail-open) so it never wedges the session.
 
@@ -31,19 +32,21 @@ echo "$now" >> "$STAMP_FILE" 2>/dev/null
 count=$(wc -l < "$STAMP_FILE" 2>/dev/null | tr -d ' ')
 [ -n "$count" ] || exit 0
 
-if [ "$count" -gt 5 ]; then
-  jq -n --arg c "$count" '{
+ceiling="${PARALLEL_AGENT_CEILING:-5}"
+
+if [ "$count" -gt "$ceiling" ]; then
+  jq -n --arg c "$count" --arg ceil "$ceiling" '{
     hookSpecificOutput: {
       hookEventName: "PreToolUse",
       permissionDecision: "deny",
-      permissionDecisionReason: ("[PARALLEL-AGENT GUARD] " + $c + " Task dispatches within 8s exceeds the hard ceiling of 5 concurrent agents (8 GB M3 — see user_profile.md). This call is BLOCKED. Wait for the current batch to return, then re-dispatch the overflow in a later wave. Prefer waves of <=4.")
+      permissionDecisionReason: ("[PARALLEL-AGENT GUARD] " + $c + " Task dispatches within 8s exceeds the hard ceiling of " + $ceil + " concurrent agents (PARALLEL_AGENT_CEILING). This call is BLOCKED. Wait for the current batch to return, then re-dispatch the overflow in a later wave.")
     }
   }'
-elif [ "$count" -eq 5 ]; then
-  jq -n '{
+elif [ "$count" -eq "$ceiling" ]; then
+  jq -n --arg ceil "$ceiling" '{
     hookSpecificOutput: {
       hookEventName: "PreToolUse",
-      additionalContext: "[PARALLEL-AGENT GUARD] You are at the hard ceiling of 5 concurrent Agent dispatches (8 GB M3). Launch no more in this wave (prefer <=4); wait for these to return before the next batch."
+      additionalContext: ("[PARALLEL-AGENT GUARD] You are at the hard ceiling of " + $ceil + " concurrent Agent dispatches (PARALLEL_AGENT_CEILING). Launch no more in this wave; wait for these to return before the next batch.")
     }
   }'
 fi

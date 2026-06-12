@@ -1,0 +1,7 @@
+{
+  "$comment": "Example archived MCP server config for the /mcp-activate-* commands. Copy files like this into ~/.claude/mcp-archive/ — one file per server, keyed by server name. The activate commands read them with: claude mcp add-json <name> \"$(cat ~/.claude/mcp-archive/<name>.json | jq '.<name>')\". Keep API keys as ${ENV_VAR} references, never literal values.",
+  "context7": {
+    "command": "npx",
+    "args": ["-y", "@upstash/context7-mcp@latest"]
+  }
+}

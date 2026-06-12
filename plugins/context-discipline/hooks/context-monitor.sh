@@ -36,7 +36,7 @@ if [ -n "$used" ] && [ "$used" != "null" ] && [ "$used" != "0" ]; then
         date +%s > "$STATE_FILE"
         remaining=$((100 - used_int))
         cat <<SYSMSG
-CONTEXT THRESHOLD ALERT: Context is ${used_int}% used (${remaining}% remaining — below 35% threshold).
+CONTEXT THRESHOLD ALERT: Context is ${used_int}% used (${remaining}% remaining — at/above the ${THRESHOLD_USED}% threshold).
 
 REQUIRED ACTIONS — Execute immediately in this exact order:
 1. Run the /context-manager skill NOW to save .context/learnings.md, .context/session_update.md, and .context/resume_actions.md
@@ -55,7 +55,7 @@ fi
 transcript=$(echo "$input" | jq -r '.transcript_path // empty' 2>/dev/null)
 
 if [ -n "$transcript" ] && [ -f "$transcript" ]; then
-    # Opus 4.7: ~200K token context ~ ~800K chars
+    # ~200K token context ~ ~800K chars
     # 50% of 800K ~ 400K chars
     # JSONL has metadata overhead, so use 350K as conservative trigger
     file_size=$(wc -c < "$transcript" 2>/dev/null | tr -d ' ')
@@ -64,7 +64,7 @@ if [ -n "$transcript" ] && [ -f "$transcript" ]; then
         date +%s > "$STATE_FILE"
         size_mb=$(echo "scale=1; $file_size / 1048576" | bc 2>/dev/null || echo "large")
         cat <<SYSMSG
-CONTEXT THRESHOLD ALERT: Transcript size is ${size_mb}MB — estimated context usage exceeds 65% (below 35% remaining).
+CONTEXT THRESHOLD ALERT: Transcript size is ${size_mb}MB — estimated context usage exceeds the ${THRESHOLD_USED}% threshold.
 
 REQUIRED ACTIONS — Execute immediately in this exact order:
 1. Run the /context-manager skill NOW to save .context/learnings.md, .context/session_update.md, and .context/resume_actions.md
