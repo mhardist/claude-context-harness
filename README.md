@@ -50,7 +50,6 @@ Then copy what you want from [`templates/`](templates/):
 |---|---|---|
 | `prompt-architect` | skill | Turns vague ideas into explicit, buildable prompts |
 | `seven-advisors` | skill | Multi-perspective decision council — six de Bono-style advisors + a Stakeholder voice, run in parallel, synthesized |
-| `ralph-simplify` | skill | Aggressively strips overengineering ("what would a child do?") |
 | `mcp-guide` | skill | Which MCP server to use, when |
 | `/mcp-activate-*` | commands | Activate MCP servers on demand instead of always-on — saves context every session |
 

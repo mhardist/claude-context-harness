@@ -67,6 +67,16 @@ findings into:
 - a new/changed hook (if the harness should enforce it), or
 - a CLAUDE.md rule (if it's a standing instruction).
 
+## File Safety
+
+- NEVER overwrite existing deliverables (PDFs, reports, exports) without
+  first creating a timestamped backup (e.g., `filename_v2_20260611.pdf`)
+- Before generating a file with the same name as an existing one, check git
+  status and stash/copy the prior version
+- (The edit-backup hook in `settings.json.example` enforces a copy-on-write
+  backup for every Write/Edit automatically — this rule covers generated
+  artifacts the hook can't see.)
+
 ## Core Operating Principles
 
 1. **Don't assume. Don't hide confusion. Surface tradeoffs.**
