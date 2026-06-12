@@ -16,7 +16,7 @@
     {
       "name": "working-style",
       "source": "./plugins/working-style",
-      "description": "Skills that shape how work gets done: prompt structuring, aggressive simplification, and on-demand MCP activation to keep context lean."
+      "description": "Skills that shape how work gets done: prompt structuring, multi-perspective decisions, aggressive simplification, and on-demand MCP activation to keep context lean."
     }
   ]
 }

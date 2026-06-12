@@ -21,7 +21,7 @@ These are excellent third-party plugins and skills we use daily alongside this h
 ## Technique lineage
 
 - **The Ralph loop** — the iterative "keep trying until it works" agent technique is [Geoffrey Huntley](https://ghuntley.com/ralph/)'s. Our `ralph-simplify` skill applies the same spirit to stripping complexity. The original `ralph-loop` plugin ships in [anthropics/claude-plugins-official](https://github.com/anthropics/claude-plugins-official).
-- **seven-advisors** — a multi-perspective decision-council skill we use daily (conceptually descended from Edward de Bono's *Six Thinking Hats* and Andrej Karpathy's LLM-council pattern) is **not shipped here** because we haven't traced its original author. If you know the source — or it's yours — open an issue and we'll credit and include it.
+- **seven-advisors** — the council pattern descends from two sources: Edward de Bono's *Six Thinking Hats* (the six advisor archetypes and their colors) and Andrej Karpathy's [llm-council](https://github.com/karpathy/llm-council) pattern (independent parallel perspectives, then synthesis). The skill text itself, including the seventh Stakeholder advisor, was authored here. If you believe an earlier version of this skill is yours, open an issue and we'll credit you.
 - **prompt-architect** — independently authored here (verified by content comparison). An unrelated public skill shares the name: [ckelsoe/prompt-architect](https://github.com/ckelsoe/prompt-architect) (MIT), a prompt-engineering framework selector worth a look in its own right.
 
 If you believe something here originated with you and isn't credited, open an issue — we will fix it immediately.

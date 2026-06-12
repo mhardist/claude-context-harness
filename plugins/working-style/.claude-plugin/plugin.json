@@ -1,6 +1,6 @@
 {
   "name": "working-style",
-  "description": "Skills that shape how work gets done: turn vague ideas into explicit prompts (prompt-architect), strip overengineering (ralph-simplify), and activate MCP servers on demand to keep context lean (mcp-guide + /mcp-activate-* commands).",
+  "description": "Skills that shape how work gets done: turn vague ideas into explicit prompts (prompt-architect), deliberate important decisions from seven perspectives (seven-advisors), strip overengineering (ralph-simplify), and activate MCP servers on demand to keep context lean (mcp-guide + /mcp-activate-* commands).",
   "version": "0.1.0",
   "author": {
     "name": "Miki Hardisty"
